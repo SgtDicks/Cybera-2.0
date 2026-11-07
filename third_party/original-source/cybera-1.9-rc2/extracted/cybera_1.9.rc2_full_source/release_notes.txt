@@ -1,0 +1,75 @@
+$Id: release_notes.txt 40 2006-02-20 19:30:23Z sam $
+________________________________________________________________________________
+CYBERA - Release 1.9.rc2 Notes
+________________________________________________________________________________
+English:
+This program is distributed under the terms of the GNU General Public License.
+Cybera is a cyber café administration system. It is comprised of two programs,
+a client installed on each workstation piloted by a server application 
+installed on a central server.
+Cybera works with rechargeable prepaid cards or user accounts or in a post 
+paid self service mode. Features include complete client workstation control 
+and user rights lockdown such as no shutdown, no administrative tools, 
+no hard drive access, etc.
+Cybera also provides usage statistics and basic accounting.
+The interface is in English, French, Spanish, German, Italian, Greek and 
+Brazilian Portuguese.
+Cybera can also be used as a training tool as the clients can be blocked with 
+the screen of the server, enabling students to follow courseware.
+Cybera is written in Visual Basic 6. It uses a Jet database for storing cards, 
+recharges and session and income history. 
+This program is designed to work on Win2000 or WinXP Pro only.
+
+Release specific information:
+If you are installing Cybera over a pre rel1.7 release, certain configuration 
+settings will not be imported and will have to be reconfigured.
+
+NOTE: Cybera cannot be run from the source code archive only. The Cybera 
+      executables will not work correctly if the installer has not been executed
+	  to create the required file environment.
+
+This release contains:
+cybera_1.9.rc2_full_source.zip:     Project source code
+cybera-server_1.9.rc2.exe:          Server installer
+cybera-client_1.9.rc2.exe:          Workstation installer
+________________________________________________________________________________
+Français :
+Ce programme est distribué sous les termes de la Licence Publique Générale GNU.
+Cybera est un système de gestion de cyber café. Il fonctionne sur le modèle 
+client serveur où un ordinateur : le serveur, pilote et contrôle un ensemble 
+d'autres ordinateurs : les postes client. 
+Cybera fonctionne selon un principe de cartes ou de comptes client 
+rechargeables. Chaque utilisateur achète une durée d'utilisation qui est 
+imputée sur une carte. Cette carte correspond à un compte sur le serveur. Il 
+peut ensuite acheter des recharges de temps d'utilisation qui est alors imputé 
+à sa carte. Il existe aussi un mode dit " Libre Service " qui repose sur un 
+lot de recharges prédéfinies où le serveur calcule le montant dû en fonction 
+de la durée d'utilisation du poste client.
+En plus de contrôler l'accès aux postes clients, le système Cybera est capable 
+de verrouiller certains paramètres des postes clients tels que : interdire 
+d'arrêter l'ordinateur, interdire l'accès aux outils d'administration, au 
+disque dur, etc.
+Enfin, Cybera est aussi utilisable comme outil de gestion de salle de 
+formation informatique. Dans ce contexte, Cybera donne la possibilité de 
+bloquer les postes des apprenants et même de leur faire suivre une 
+présentation diffusée sur leur écran à partir du serveur.
+Cybera est écrit en Visual Basic 6. Il utilise une base de données Jet pour 
+stocker les carts & clients et l'historique.
+Ce programme est conçu seulement pour win2000 ou winXP Pro.
+
+Information spécifique à cette release :
+Si vous installez Cybera par dessus une release avant rel1.7, certain éléments
+de la configuration ne seront pas importés et devront être reconfigurés.
+
+NOTE : Cybera ne pent pas être demarré à partir de l'archive du code source
+       uniquement. Les executables Cybera ne marcheront que si les instalateurs
+	   ont été éxecutés afin de créer l'environement fichier requis.
+
+Cette release contient :
+cybera_1.9.rc2_full_source.zip:     Code source du projet
+cybera-server_1.9.rc2.exe:          Installeur du serveur
+cybera-client_1.9.rc2.exe:          Installeur du client (Poste de travail)
+________________________________________________________________________________
+Contact :
+Email: smonsarr@users.sf.net
+Web: http://cybera.sf.net/

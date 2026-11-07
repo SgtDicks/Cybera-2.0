@@ -1,0 +1,636 @@
+$Id: changelog.txt 40 2006-02-20 19:30:23Z sam $
+________________________________________________________________________________
+CYBERA - Release 1.9.rc2 change log
+________________________________________________________________________________
+Cybera Server:
+
+20060220 cybera-server_1.9.rc2.exe
+New functionality:
+- Added prepaid Self service session mode: the manager directly recharges a 
+  workstation with a given recharge. The session works exactly like a client 
+  or card session except that remaining prepaid time cannot be kept.
+- Enhanced workstation list info: tooltips now show remaining time/amount due 
+  and session type.
+- Added better recharge typing: You can now specify which session type a given
+  recharge is for (Card, Client, Prepaid self service, Postpaid self service).
+- Added finer recharge validity settings: you can now set the validity from 1 to
+  30 days, weeks, months, years.
+- Changed currency formatting settings: the format now contains </currSymbol> 
+  that is replaced by the given symbol, this enables formats that put the symbol
+  before the amount such as the £.
+- Added event logging levels, by default only important events used by stats
+  will be added to the events table, it is possible to start Cybera Server with
+  the following two command line switches: -e:v (verbose) and -e:a (even more
+  verbose) in order to increase event logging detail. The default setting will 
+  diminish the amount of data in the database and will speed up the stats.
+- Added an "Unlimited" flag to recharges. Unlimited recharges enable one to 
+  provide Cards and Client accounts (not self-service sessions)  with unlimited 
+  usage for a given validity period (in days, weeks, months, years).
+- Added ability to sort recharges in Options and in the recharge window by
+  double-clicking a column heading.
+- Added a new post-paid billing mode: Time based billing. In this mode an 
+  ordered list of selected recharges is used as a base. The system is given a 
+  base time increment and a minimum billed time and calculates the bill using 
+  these two times and the list of selected recharges.
+- Added a new post-paid billing mode: Simple sequential recharge billing. In 
+  this mode Cybera applies all the post-paid recharges in order from shortest to
+  longest time. Should the session run further that the longest recharge, the
+  system continues to increment the bill by specified time increments using the
+  last recharge time/price ratio. This is now the default post-paid billing mode 
+  for new installations.
+- Added post-paid grace period. The admin can specify a grace period which will
+  enable managers to cancel ended post-paid sessions without collecting payment
+  if the session time is smaller that the specified grace period.
+- Optimized card and client list update code: now only modified cards/clients 
+  are updated in the GUI. This will speed up the GUI when one has over 2000
+  elements in the cards or clients lists
+- Added two new user rights: Card creation and client creation. This enables one
+  to create users that cannot add customers but can only manage existing 
+  customers.
+- Changed the way database upgrading works: Cybera now upgrades a copy of the DB
+  and only deletes the old version if the upgrade process works fine.
+- Added ability to define the default usage mode (client/card/prepaid).
+- Added button to generate a random number for the client login in the 
+  "New Client" form so that one can use cybera clients like password protected 
+  Cybera Cards.
+- Extended Client comment to 255 characters and enabled multi-line comments.
+  
+Bug fixes:
+- Fixed bug in workstation view, the displayed elapsed time was the workstation
+  usage time, this was misleading, now it is the true elapsed time (without
+  including paused time etc). The workstation usage time is displayed as a 
+  tooltip.
+- Fixed GUI bug in Workstation view in the dropdown menu.
+- Fixed GUI bug that could crash the server on form resize (detected under w2k).
+- Fixed GUI bug: the workstation control buttons where not contextualised to the
+  current customer type.
+- Fixed tabstop GUI bugs in Options, user config.
+- Fixed bug in Stats: Internet connection time calculation was off (as well as 
+  other stats).
+- Fixed bug in Stats: Session graphs may not have been filled under certain
+  conditions.
+- Fixed bug in About box when it was left displayed for over 56 minutes.
+- Fixed bug in user admin: if no users exist the delete & modify buttons where
+  still active.
+- Fixed GUI bug in Workstation view: If the same workstation had been connected
+  under different credentials (Mac address, NETBIOS name etc) then it was 
+  present multiple times in the workstation list.
+- Fixed spelling mistakes in the English and French versions.
+- Command line swiches are now case insensitive and can be prefixed with '/' or
+  '-' (ex: /T -k)
+- Fixed bug in session updating for free sessions: previous selfservice sessions
+  where also updated.
+
+20051020 cybera-server_1.9.rc1.exe
+New functionality:
+- Changed client login max lengh to 255 caracters.
+- Changed off peak functonality: Now if you set:
+  * Before_time > After_time then off peak is between those two times.
+  * Before_time < After_time then off peak is from 00:00:00 to 
+    before_time and from After_time to 23:59:59.
+- Added a small form to the database upgrade procedure.
+- Integrated Hungarian translation.
+- Added the ability to release user rights when logged in as admin (in the menus
+  only).
+
+Bug fixes:
+- Fixed bug in client view: the delete command on the dropdown menu on the right
+  of the modify button did not do anything.
+- Fixed bug on startup when no default printer is found (repoted by João 
+  Brázio).
+- Fixed yet another bug in the Console: the next session time was not correct 
+  (well, it was but warped if time ratio % activated - sorry João).
+- Fixed bug in client recharge process: the recharge label was not added to the
+  income entry if the bonus system was deactivated.
+- Fixed bug in stats printout: the table ColAlignments was not correct.
+- Fixed GUI bug: Status panel image incorrect on shutdown.
+- Fixed bug in follow mode: if the network transfer was slow between the server
+  and a workstation, the server could loose control over the workstation.
+- Made modifications to session stats calculations to speed them up.
+- Fixed several bugs in the installer/uninstaller.
+- Fixed bug in Options form errors could occur when no recharges or services
+  where defined.
+- Fixed a bug in server init that could give GUI bugs in certain conditions.
+- Fixed GUI bug: the Chat warning status message was not correctly implemented.
+
+
+20050915 cybera-server_1.9.b3.exe
+New functionality:
+- Integrated Brazilian Portuguese translation.
+- Changed the user login (manager) to max 255 characters.
+- Minor GUI inhancement in Card view (pending cards controls).
+- Added Chat system between Server and workstations (FR #1179262).
+- Added basic export capability to the History form: a new button (or Ctrl+C 
+  will copy the card/client's selected data to the clipborard as a tab delimited
+  table.
+- Added ability to print Stats and History output to the default System printer.
+- Added ability to specify the default workstation mode (connected or
+  disconnected).
+
+  Bug fixes:
+- Fixed bug that prevented mass creation of pending cards without owner or type.
+- Card type and owner where not memorised in the mass card creation form.
+- Fixed small bug in session journals view when the logged in user did not have
+  the journals user rights, certain controls where not disabled
+- Fixed user rights bug: even is a user did not have the right to unblock a
+  workstation, he/she could do so by right clicking on the workstations in the
+  workstation view (reported by João Brázio).
+- Fixed bug in Console update: the next session end was incorrectly calculated
+  if both client and card sessions are running (reported by João Brázio).
+- Fixed bug in recharge process: the recharge label was not added to the income
+  entry if the bonus system was deactivated.
+- Fixed bug in Workstation GUI, the status icon was sometimes not displayed
+  properly.
+- Fixed bug when workstation is rebooted during a self-service session: the 
+  session was never paid. Now the workstation comes back up blocked as if the
+  user had stopped his session and Cybera waits for payment before releasing the
+  workstation.
+- Enabled time ratios to be zero, thus making disconnected mode & off peak free.
+
+20050806 cybera-server_1.9.b2.exe
+New functionality:
+- Added System tray icon and ability to hide the server window (minimize to 
+  tray). The current user will be logged out after 5 minutes in this mode 
+  (FR #1185787).
+- Added Mass card creation system (FR #1179260):
+  It is possible to mass create cards either directly enabled (ready to use) or
+  in a pending state that needs to be enabled in order to be used. In this
+  configuration, the Cards view of the server window will show the pending cards
+  in a seperate list at the bottom of the form. It is possible to output the 
+  generated card numbers to a simple text file or using a template HTML file
+  containing </crdNumber> tags.
+- Added the ability to chose the session stats output (FR #1167767).
+
+Bug fixes:
+- Fixed bug in Workstation Boot (WOL command) when the workstations do not
+  provide a correct MAC addess.
+- Fixed bug in Options form when displaying and selecting the network interface
+  to bind to.
+- Fixed bug (reported by Ynigo Geniza): If client name has letters in it, then
+  that user can log in to different machines at the same time by changing the
+  caps.
+- Fixed bug in Login form that made all passwords lowercase. Upercase passwords
+  did not work (BUG #1242256).
+
+20050605 cybera-server_1.9.b1.exe
+New functionality:
+- Integrated Greek, German and Italian translations
+- Transfered default workstation language selection from Client to server
+  options
+- Changed msg and logo update feature: if not activated on server, laguage
+  selection on workstation changes the displayed rtf file
+
+Bug fixes:
+- Fixed bug in File menu when switching languages
+- Fixed GUI for up-comming translations
+- Fixed big bug in GUI update that stopped Cybea working with more than 20
+  clients (reported by bsp98ht)
+- Fixed small GUI bug in workstation popup menu positioning when the
+  workstations have been scrolled (reported by bsp98ht)
+- Fixed bugs in Setup Wizard (max clients now 50 & bug in default recharge
+  creation)
+- Fixed bug in MAC address detection in a multi network adapter environment
+
+20050419 cybera-server_1.8.exe
+New functionality:
+- Added ability to choose the drive letters to hide in user rights lockdown
+- Added ability to choose the database backup location
+- Added ability to set the default worktation state to Available or Deactivated
+- Added Recharge deletion to user profile
+- Fixed GUI for up-comming translations
+- Integrated Spanish translation
+
+Bug fixes:
+- Fixed bug in options form that stopped the current laguage from being selected
+
+20050331 cybera-server_1.8.rc2.exe
+New functionality:
+- Added the possiblilty to choose the network adapter to bind to on the server
+  so that computers with several adapters can select the correct local network
+  adapter
+- Added ability to display workstations in two cols (compact view) for cyber
+  cafes that have a lot of computers
+
+Bug fixes:
+- Fixed bug in client history: recharges could not be deleted
+- Fixed bug in Workstation lockdown: The classic menu MUST be used on the
+  workstations under Windows XP if you want to forbid Logoff. This seems to be a
+  Microsoft bug The server now forces the use of the standard menu
+- Set max workstations to 50
+- Fixed small GUI bugs
+
+20050320 cybera-server_1.8.rc1.exe
+New functionality:
+- Changed workstation boot & shutdown functionality (easier to use)
+- Added ability to apply multiple recharges at the same time (added a quantity
+  field to the recharge form)
+- Added ability to enable / disable credit expiry for clients
+- Added session start & end batch files on the workstations
+- Added GUI inhancement (input help tooltips)
+- Added GUI inhancement (Greyed cards & clients in lists if disabled)
+
+Bug fixes:
+- Fixed bug in worksation data processing (data from different workstations
+  could get mixed up)
+- Fixed small GUI bug in Services view
+
+20050308 cybera-server_1.7.33.exe
+Bug fixes:
+- Fixed bug in settings saving when locale's digit grouping symbol is dot "."
+- Fixed small GUI bugs (popup menus in workstation view etc)
+
+20050308 cybera-server_1.7.32.exe
+Bug fixes:
+- Fixed bug in new card creation on duplicate number detection
+- Fixed bug in client management that prevented client usage
+- Fixed bugs on card or client recharge when the customer has no more credit
+- Fixed bug on session resume when the customer has no more credit
+- Fixed bug in console update: clients where not taken into account
+- Fixed small GUI bugs (tabstops etc)
+
+20050303 cybera-server_1.7.28.exe
+New functionality:
+- Added "Clients": prepaid user accounts with a login and a password
+- Added "Shutdown unused workstations" in Workstation shutdown form
+- Added Workstation Boot selection form and context menu items
+- The workstation view now shows all previously connected computers
+
+Bug fixes:
+- Fixed possible bug in new card creation
+- Fixed a bug when the computer is set up to use 12h clock that prevented
+  setting recharges of more that 12h (I hate "Locale" PBs!)
+- Fixed a bug in card & client recharge where the label was incorrect when using
+  12h clock in regional settings 
+- Fixed other 12h clock bugs... (Again, I hate "Locale" PBs!)
+- Fixed bug in bonus threshold calculation during recharge when using currencies
+  that use decimals
+- Fixed small gui bugs
+- Fixed bug in session resume when client and server clocks are not in sync
+- Fixed bug in session resume: used time credit is now deduced from remaining
+  time credit instead of replacing time credit
+- Fixed bug in DB backup that could delete old backups without replacing them.
+
+20050217 cybera-server_1.6.47.exe
+New functionality:
+- Added automatic Client - Server connection (client finds a server to connect
+  to)
+- Added Cybera User management & user rights on server (employees). This also
+  enables Income and sessions to be attributed to a given user
+- Added ability to Enable/Disable Session Pause on clients
+- URLspy: added ability to automatically purge URLs as the DB will grow too fast
+  without automatic limiting
+- Added info on where the last network backup is to the DB maintenance form
+- Added warnings when DB size grows past 30MB, 60MB and 120MB
+- Added a configuration wizard to help installing and setting up Cybera
+- DB purge: added option to include/exclude accounting data from purge
+- Added Popup menus to clients in Client view and to card list in card view
+- Added Wake on LAN capablilty: the server can boot the last client workstations
+  who where connected to the server
+
+Bug fixes:
+- Better main window resize management
+- More robust session stats compilation (better recovery from app crash and
+  corrupt EVENT entries in DB)
+- Fixed big bug in app shutdown introduced in rel1.5
+- Fixed possible bug in session open code that corrupted the events DB table
+  entries
+- Diminished console update overhead
+- Fixed possible bug in income journal
+- Fixed small bug in Options page (some params did not trigger modification
+  detection)
+- Fixed bug in client view: crd history button was invisible when credit runs
+  out
+- Fixed small bug in Stats, session list averages where incorrect
+- Fixed small bug in card view when positioning card list after seaching for a
+  card.
+- Changed the default values for many server settings in order to make Cybera
+  easier to install and use
+- Fixed bug in DB purge
+- Fixed bug on certain buttons where an accidental doubleclick triggered
+  unpredictable events
+- Fixed bug in DB maintanace: on DB restore selection, the latest version was
+  restored regardless of the selection
+- Fixed bug in DB restore: if DB passwd was different restore failed
+- Fixed gui bug in journals where boubleclick on filters was possible during a
+  stat computation
+- Enhanced recharge config form in options
+- Fixed bug in Uninstall: reg keys where not deleted
+- Added a 2 sec timer before activating server-client connectivity in order to
+  let Server startup before dealing with client requests
+- GUI: Enhanced client selection responsiveness in client view
+- Fixed bug that could render resumed sessions unstable (after server restart)
+- Fixed bug in stats: session resume after server restat was not detected
+  properly
+- Fixed possible bug in card history when the same card number has existed more
+  than once
+- Fixed minor GUI bug in stats progress bar
+
+20041230 cybera-server_1.5.46.exe
+New functionality:
+- Intergrated (almost) all client and session settings into the server
+- Client sessions no longer are closed when client-server connection is cut.
+  The server is updated as soon as connection is restored
+- changed default setting for selfservice mode: now off
+- Added ability to hide card numbers on client (like passwords)
+- Added ability to activate/deactivate cards
+- Added client Internet explorter URL logging ability
+- Added DB backup to client workstations for extra security
+- Externalized language resources as dlls (easier translations)
+- Added ability to automatically upgrade the database when needed
+- Added ability to restore the database from one of the backups
+- Added ability to modify maximum number of database backups in the registry 
+  (delault 4, max 20) Key: "HKLM\Software\Cybera Server\DB\Max Backups"
+- Added ability to empty IM profiles in session cleanup (GAIM only for now)
+- GUI touch ups (use of system fonts among other things)
+
+Bug fixes:
+- Fixed missing default cyber cafe logo in installer package
+- incorrect error management on 'no file found' when attempting to preview
+  message & logo files
+- Fixed bug in stats: incorrect internet connection time on current date
+- Moved DB backup from app startup to app shutdown and then only if the database
+  was correctly opend and closed.
+- speeded up database management at shutdown
+
+20041130 cybera-server_1.4.52.exe
+Bug fixes:
+- Fixed bug when recharging a card in use: expiry date not updated
+- Fixed small GUI update bug in card view
+- Fixed bug in card recharge when client attempts a connection at exactly the
+  same time.
+
+20041123 cybera-server_1.4.48.exe
+New functionality:
+- Added ability to modify maximum number of clients in the registry
+  Key: "HKLM\Software\Cybera Server\Clients\Max Number of clients"
+
+Bug fixes:
+- Fixed bug in bonus attribution
+- Fixed GUI bug in Client workstation view
+- Fixed exception handling pb.
+
+20041028 cybera-server_1.4.40.exe
+New functionality:
+- Added extra info in Session and income journal
+- Added ability to search cards by owner as well as by number
+
+Bug fixes:
+- Fixed display bug in session journal when times are over 24h
+- Fixed bug in stats progress bar
+- Fixed bug in Recharge form when prices are over 1000 units
+- Fixed bug in popup menu of start session button in card view
+
+20041022 cybera-server_1.4.33.exe
+New functionality:
+- ability to change the client follow mode update interval
+
+Bug fixes:
+- small problem with following selected client in client view
+- bug in installer package over psapi.dll
+
+20041011 cybera-server_1.4.29.exe
+Bug fixes
+- bug when deleting recharges from cards in card history
+
+20041008 cybera-server_1.4.28.exe
+Base SourceForge release 
+
+________________________________________________________________________________
+Cybera Workstation:
+
+20060220 cybera-client_1.9.rc2.exe
+New functionality:
+- Added two new command line swiches:
+  -s : this hides all status windows while a session is running
+  -c : this disables all session close buttons so that the customer cannot close 
+       a running session him/her self.
+
+Bug fixes:
+- Fixed GUI bug in blocked screen when cards are not enabled, the screen was not
+  reset properly.
+- Fixed bug in self-service mode, the displayed elapsed time was the workstation
+  usage time, this was misleading, now it is the true elapsed time (without
+  including paused time etc). The workstation usage time is displayed as a 
+  tooltip.
+- Fixed bug that enabled clicking on the system tray icon at start-up.
+- Changed session end routine: for self-service sessions the end batch file is 
+  now run after the customer has paid (once the collect button has been pressed 
+  on the server).
+- Fixed GUI bug in status forms in post-paid self-service mode.
+- Fixed bug in About box when it was left displayed for over 56 minutes.
+- Fixed spelling mistakes in the English and French versions.
+- Fixed small focus bugs in message box.
+- Command line swiches are now case insensitive and can be prefixed with '/' or
+  '-' (ex: /T -k)
+- Changed the time delay before activating a workstation after 3 unsuccessfull
+  connection attempts form 5 to 2 minutes.
+
+20051020 cybera-client_1.9.rc1.exe
+New functionality:
+- Integrated Hungarian translation.
+- Changed client login max lengh to 255 caracters.
+- Added -l command line argument, this completely disables user rights lockdown.
+
+Bug fixes:
+- Fixed bug when session is started from server: the session was always
+  connected, the default mode was not used.
+- fixed bug in status form, the set password and chat buttons where not disabled
+  properly when the server connection is down.
+- Fixed bug in disconnected mode: some forms of IE where not detected correctly.
+  If a website was called from within an explorer.exe process, Cybera did not 
+  detect and close the explorer window (found by Biba Nadjoari and the Cyber
+  users in Fada N'Gourma, Burkina Faso).
+- Fixed bug found by Luigi Lumento in workstation startup: in XP some fast
+  computers can have problems with accessing GUI resources too soon - added a
+  delay (in seconds) to the application startup that is configurable (30 seconds
+  from boot by default) in:
+  HKLM\SOFTWARE\Cybera Client\General" value "Start Delay" (in seconds)
+- Fixed bug in follow mode: if the network transfer was slow between the server
+  and a workstation, the server could loose control over the workstation.
+- Fixed bug in Free session resume (from pause, lock or follow): the Stop button
+  was no longer displayed.
+- Fixed bug in blocked form that prevented a client from entring his password
+  if he had had a previous incorrect login (found by Daniel Bernal).
+- Fixed bug that stopped screensavers from working when the screen is blocked.
+- Fixed several bugs in the installer/uninstaller.
+- Fixed big bug in workstation deactivation: if server operator was admin then
+  the workstation could be deactivated with a blank password.
+- Changed the way session start and stop batch files are run: in self service
+  mode, the %1 parameter is now the workstation computer name.
+- Fixed bug when only Selfservice mode in enabled: the Activate button of the 
+  blocked screen was not enabled on session close.
+- Fixed bug in Blocked screen when Cyber Cards are disabled and Clients are 
+  enabled: the Login text input did not have focus by default.
+  
+20050915 cybera-client_1.9.b3.exe
+New functionality:
+- Integrated Brazilian Portuguese translation.
+- Changed the user login (manager) to max 255 characters.
+- Added Chat system between Server and workstations (FR #1179262).
+- Added ability to specify the default workstation mode (connected or
+  disconnected).
+- Changed off peak functonality: Now if you set:
+  + Before_time > After_time then off peak is between those two times
+  + Before_time < After_time then off peak is from 00:00:00 to 
+    before_time and from After_time to 23:59:59
+
+Bug fixes:
+- Stripped down and repackaged Windows locking DLL for Cybera due to Antivir
+  detecting WinLockDLL as a virus.
+- Fixed bug that stopped the Follow mode from starting correctly.
+- Fixed bug in blocked form that made language selection impossible with the
+  mouse (reported by João Brázio).
+- Fixed bug when workstation is rebooted during a self-service session: the
+  session was never payed. Now the workstation comes back up blocked as if the
+  user had stopped his session and Cybera waits for payment before releasing the
+  workstation.
+- Enabled time ratios to be zero, thus making disconnected mode & off peak free.
+
+20050806 cybera-client_1.9.b2.exe
+New functionality:
+- Added a 2 minute timeout when the client gets locked due to 3 invalid logins /
+  card numbers. The clients become active after this time
+- Added compatibility with Terminal server and diskless workstations
+- Removed Cybera from taskbar in small status mode. Added ability to hide/show
+  status window on doubleclick on the System tray icon (FR #1185787).
+- Added the ability for the manager logged in to the server to deactivate Cybera
+  client with his own login & password if he has the right to unblock the
+  workstations. otherwise the admin password is required. The admin password is
+  still required in order to quit Cybera client but no longer in order to
+  logoff, reboot or shutdown the computer (FR #1239603).
+- Added delete complete IE cache (all files & cookies) and history to IE
+  clean-up routine before each session start (if requested in server options).
+
+Bug fixes:
+- Fixed bug in blocked form when Self service was selected: the Activate button
+  was not always enabled (reported by izopizo).
+- Fixed small GUI bug in small status form.
+- Fixed bug in time accounting when the workstation system time is changed
+  during a customer session.
+- Fixed bug (reported by Ynigo Geniza): If client name has letters in it, then
+  that user can log in to different machines at the same time by changing the
+  caps.
+
+20050605 cybera-client_1.9.b1.exe
+New functionality:
+- Integrated Greek, German and Italian translations
+- Added elapsed time in status window when in post-paid mode
+- Transfered default workstation language selection from Client to server
+  options
+- Added laguage selection to blocked screen
+- Changed GUI of blocked screen a bit: added header and footer
+- Changed msg and logo update feature: if not activated on server, laguage
+  selection on workstation changes the displayed rtf file
+
+Bug fixes:
+- Fixed GUI for up-comming translations
+- Fixed bug in MAC address detection in a multi network adapter environment
+- Fixed bug when the MAC address was not correctly detected
+
+20050419 cybera-client_1.8.exe
+New functionality:
+- Added ability to set the default worktation state to Available or Deactivated
+- Integrated Spanish translation
+
+Bug fixes:
+- Fixed bug in options form that stopped the current laguage from being selected
+
+20050331 cybera-client_1.8.rc2.exe
+New functionality:
+- Added a Quit button in the bottom left-hand corner of the screen for free
+  sessions
+- Added a maximum of 90 sec wait before connecting to server at start to let the
+  OS startup properly
+- Added server connectivity info to the Blocked screen
+
+Bug fixes:
+- Fixed GUI bug in Main form height calculation under XP
+- Fixed bug in WinXP: in order to lockdown the workstation, the XP Welcome
+  screen HAS to be deactivated. This is done by the installer
+- Fixed GUI for up-comming translations
+- Fixed bug in Installer: Removed the uninstall start menu item from the all
+  users start menu. The uninstall item is now only for the user that installed
+  Cybera
+- Corrected a bug that could warn users that they had 5 ot 2 mins left when
+  infact they had 48:05:00 or 48:02:00 left
+- Fixed small GUI bugs, including cleaning up the status windows
+- Fixed bug in system tray context menu
+
+20050320 cybera-client_1.8.rc1.exe
+New functionality:
+- Added session start & end batch files on the workstations
+- Added GUI inhancement (input help tooltips)
+
+20050303 cybera-client_1.7.27.exe
+New functionality:
+- Added "Clients": prepaid user accounts with a login and a password
+  
+Bug fixes:
+- Fixed small gui bugs
+- Fixed bug in session resume when client and server clocks are not in sync
+- Fixed bug in session resume: used time credit is now deduced from remaining
+  time credit instead of replacing time credit
+- The workstation no longer needs the system clock to be in sync with the system
+  clock of the server for any aspect of Cybera
+
+20050217 cybera-client_1.6.42.exe
+New functionality:
+- Added automatic Client - Server connection (client finds a server to connect
+  to)
+- Deactivated windows hotkeys while blocked
+- Added ability to Enable/Disable Session Pause on clients
+- Added a configuration wizard to help installing and setting up Cybera
+- Added Wake on LAN capablilty: the server can boot the last client workstations
+  who where connected to the server
+
+Bug fixes:
+- Removed the client from the windows list
+- Changed the default values for most client settings in order to make Cybera
+  easier to install and use
+- URLspy: Stoped client from sending URLs that are of no interest (about:blank
+  etc)
+- URLspy: Limited URLs sent to server to when the caption and the URL change
+- At last fixed an obscure bug in file transfers from server to client where the
+  last chunk of jpgs was corrupted (in follow mode for example). This was due to
+  4 unexplained bytes being added to the file when using the LEFT function
+  directly in a PUT statement
+- Fixed bug that could render resumed sessions unstable (after server restart)
+- Fixed bug on file reception that could bring down the Client-Server connection
+
+20041230 cybera-client_1.5.61.exe
+New functionality:
+- Intergrated (almost) all client and session settings into the server
+- Client sessions no longer are closed when client-server connection is cut.
+  The server is updated as soon as connection is restored
+- Added ability to hide card numbers (like passwords)
+- Various security enhancements (ex: max 3 attempts at card N° entry)
+- Externalized language resources as dlls (easier translations)
+- Added ability to empty IM profiles in session cleanup (GAIM only for now)
+- GUI touch ups (use of system fonts among other things)
+
+Bug fixes:
+- Fixed big bug: card number '000000' on client would enable free session
+- Enhanced file transfer between server and client (faster reception)
+- Optimized Client -> Server communication (less network trafic)
+- Fixed bug blocking client when an internall error happened in blocked mode
+- Fixed bug that would sometimes put the client in 'Blocked - Session end' mode
+  when no self-service session had ended
+- Fixed bug in Uninstall: reg keys where not deleted
+
+20041123 cybera-client_1.2.31.exe
+Bug fixes:
+- various bugs in GUI management
+- Fixed exception handling pb.
+- Fixed bug in installer (MSCOMCTL.OCX missing)
+
+20041022 cybera-client_1.2.28.exe
+Bug fixes:
+- bug in installer package over psapi.dll
+
+20041011 cybera-client_1.2.26.exe
+Bug fixes:
+- Bug in user alert message display
+- Corrected spelling mistakes in french version
+
+20041008 cybera-client_1.2.24.exe
+Base SourceForge release 

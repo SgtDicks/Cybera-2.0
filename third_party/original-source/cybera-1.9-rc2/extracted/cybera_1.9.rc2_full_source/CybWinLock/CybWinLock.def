@@ -1,0 +1,8 @@
+LIBRARY "CybWinLock"
+
+EXPORTS
+	Desktop_Show_Hide @1
+	Taskbar_Show_Hide @2
+	TaskSwitching_Enable_Disable @3
+	CtrlAltDel_Enable_Disable @4
+

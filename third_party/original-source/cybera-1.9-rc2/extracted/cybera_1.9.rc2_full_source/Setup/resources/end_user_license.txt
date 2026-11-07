@@ -1,0 +1,64 @@
+                   CYBERA END-USER SOFTWARE LICENSE AGREEMENT                   
+
+Cybera is copyright © 2004-2006 by Samuel Monsarrat (the "author"). 
+A source code version of Cybera that you may use, modify and distribute is 
+available to you free-of-charge from http://cybera.sourceforge.net/ under the 
+GNU general public license.
+The accompanying executable code version of Cybera and related documentation 
+(the "product") is made available to you under the terms of this Cybera 
+end-user software license agreement (the "agreement").
+By clicking the "I Agree" button, or by installing or using Cybera, you are 
+consenting to be bound by the agreement. If you do not agree to the terms and 
+conditions of this agreement, do not click the "I Agree" button, and do not 
+install or use any part of Cybera.
+During the Cybera installation process, and at later times, you may be given 
+the option of installing additional components from third-party software 
+providers. The installation and use of those third-party components may be 
+governed by additional license agreements.
+
+1. LICENSE GRANT. You are authorised to use the product for your own private use
+   but you may not sell the product or remove any copyright information from it. 
+   Cybera may be used commercially free of charge.
+   The product can be transmitted freely, but distribution of this product on
+   other mediums, like CD-ROM, or providing the product on other websites needs
+   the explicit WRITTEN permission of the author.
+   The author grants you a non-exclusive license to use any product upgrades
+   provided by the author that replace and/or supplement the original product,
+   unless such upgrades are accompanied by a separate license, in which case the
+   terms of that license will govern.
+
+2. TERMINATION. If you breach this agreement your right to use the product will 
+   terminate immediately and without notice, but all provisions of this 
+   agreement except the license grant (paragraph 1) will survive termination 
+   and continue in effect. Upon termination, you must destroy all copies of the 
+   product.
+
+3. PROPRIETARY RIGHTS. Portions of the Product are available in source code 
+   form under the terms of the GNU general public license at 
+   http://cybera.sourceforge.net/. Nothing in this agreement will be construed 
+   to limit any rights granted under the open source license. Subject to the 
+   foregoing, Samuel Monsarrat, hereby reserves all intellectual property 
+   rights in the product, except for the rights expressly granted in this 
+   agreement. You may not remove or alter any trademark, logo, copyright or 
+   other proprietary notice in or on the product. This license does not grant 
+   you any right to use the trademarks, service marks or logos of Samuel 
+   Monsarrat.
+
+4. DISCLAIMER OF WARRANTY. The product is provided "as is" with all faults. To 
+   the extent permitted by law, Samuel Monsarrat hereby disclaims all 
+   warranties, whether express or implied, including without limitation 
+   warranties that the product is free of defects, merchantable, fit for a 
+   particular purpose and non-infringing. You bear entire risk as to selecting 
+   the product for your purposes and as to the quality and performance of the 
+   product. This limitation will apply notwithstanding the failure of essential 
+   purpose of any remedy. Some jurisdictions do not allow the exclusion or 
+   limitation of implied warranties, so this disclaimer may not apply to you.
+
+5. LIMITATION OF LIABILITY. Except as required by law, Samuel Monsarrat will 
+   not be liable for any indirect, special, incidental, consequential or 
+   exemplary damages arising out of or in any way relating to this agreement 
+   or the use of or inability to use the product, including without limitation 
+   damages for loss of goodwill, work stoppage, lost profits, loss of data, and 
+   computer failure or malfunction, even if advised of the possibility of such 
+   damages and regardless of the theory (contract, tort or otherwise) upon 
+   which such claim is based. 

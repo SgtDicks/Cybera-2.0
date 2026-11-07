@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Cybera | LAN Legacy Lounge</title>
+  <link rel="stylesheet" href="/console.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Cybera console home"><span class="brand-mark">C</span><span>CYBERA</span><small>LAN LEGACY LOUNGE</small></a>
+    <div class="server-state" id="server-state" aria-live="polite"><span class="dot neutral"></span><span>Checking bridge</span></div>
+    <button class="quiet-button" id="key-button" type="button">Connect API key</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Server-hosted management console</p>
+        <h1>Control the lounge,<br><em>without touching XP.</em></h1>
+        <p class="lede">This console runs only on the modern server. It reports safely integrated Cybera data and sends commands only through the disabled-by-default local relay.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="secondary-button" id="refresh-button" type="button">Refresh status</button>
+        <p id="last-refresh">Not yet refreshed</p>
+      </div>
+    </section>
+
+    <section class="notice" id="integration-notice" aria-live="polite">
+      <strong>Legacy data not connected.</strong>
+      <span>Connect with an API key to inspect the server and any configured read-only status snapshot.</span>
+    </section>
+
+    <section class="overview-grid" aria-label="Overview">
+      <article class="metric-card">
+        <p>Legacy server</p>
+        <strong id="legacy-process">Not checked</strong>
+        <small id="legacy-process-detail">API key required</small>
+      </article>
+      <article class="metric-card">
+        <p>Workstations</p>
+        <strong id="workstation-count">Unavailable</strong>
+        <small id="workstation-detail">No trusted snapshot loaded</small>
+      </article>
+      <article class="metric-card">
+        <p>Command relay</p>
+        <strong id="relay-state">Not checked</strong>
+        <small id="relay-detail">Commands remain protected</small>
+      </article>
+    </section>
+
+    <section class="panel split-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Workstations & sessions</p>
+          <h2>Live floor status</h2>
+        </div>
+        <span class="tag" id="snapshot-tag">No snapshot</span>
+      </div>
+      <div id="workstation-list" class="empty-state">
+        <strong>Workstation data is not integrated.</strong>
+        <p>The bridge has not received a read-only legacy status snapshot. This is intentionally different from “zero workstations.”</p>
+      </div>
+    </section>
+
+    <section class="panel command-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Session controls</p>
+          <h2>Safe command hand-off</h2>
+        </div>
+        <span class="tag muted">Local relay only</span>
+      </div>
+      <div class="command-layout">
+        <label class="field-label">Workstation ID
+          <input id="workstation-id" type="text" maxlength="64" autocomplete="off" placeholder="e.g. WS-01" pattern="[A-Za-z0-9._-]+">
+        </label>
+        <div class="command-buttons" aria-label="Session commands">
+          <button type="button" disabled title="Cybera's current bridge protocol has no safe extend command">Extend <small>Not integrated</small></button>
+          <button type="button" data-action="pause" disabled>Pause</button>
+          <button type="button" data-action="end" class="danger" disabled>End session</button>
+        </div>
+      </div>
+      <p class="command-note" id="command-note">Connect an API key and configure a local relay before session controls can be used.</p>
+      <output id="command-result" class="command-result" aria-live="polite"></output>
+    </section>
+    <section class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">Migration coverage</p><h2>Feature parity status</h2></div><span class="tag muted">Source-backed</span></div>
+      <div id="feature-list" class="empty-state"><strong>Connect an API key to load feature status.</strong></div>
+    </section>
+  </main>
+
+  <dialog id="key-dialog" aria-labelledby="key-dialog-title">
+    <form method="dialog" id="key-form">
+      <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      <p class="eyebrow">Operator authentication</p>
+      <h2 id="key-dialog-title">Connect this browser session</h2>
+      <p>The API key is sent only in request headers. It is kept in this browser tab’s session storage and is never written to this project.</p>
+      <label class="field-label">API key
+        <input id="api-key" type="password" autocomplete="current-password" required>
+      </label>
+      <div class="dialog-actions"><button class="secondary-button" value="cancel" type="button" id="forget-key">Forget key</button><button class="primary-button" value="default" type="submit">Connect</button></div>
+    </form>
+  </dialog>
+  <script src="/console.js" defer></script>
+</body>
+</html>
