@@ -1,0 +1,73 @@
+﻿Windows Registry Editor Version 5.00
+; ______________________________________________________________________________
+; Cybera - Cyber Cafe Administration
+; This file contains all the registry keys that are liable to be modified on 
+; the Workstations if User Account Lockdown is enabled. 
+; This file, if run, will unlock all the locked features of the workstation as 
+; long as the user has admin rights on the local computer.
+; $Id: cybera_unlock_reg.txt 4 2005-12-18 17:47:52Z sam $
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableChangePassword"=dword:00000000
+"DisableLockWorkstation"=dword:00000000
+"NoDispCPL"=dword:00000000
+"DisableRegistryTools"=dword:00000000
+"DisableTaskMgr"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoClose"=dword:00000000
+"NoLogoff"=dword:00000000
+"NoSimpleStartMenu"=dword:00000000
+"NoRun"=dword:00000000
+"NoActiveDesktop"=dword:00000000
+"NoSetTaskbar"=dword:00000000
+"NoSetFolders"=dword:00000000
+"NoFolderOptions"=dword:00000000
+"NoTrayContextMenu"=dword:00000000
+"NoViewContextMenu"=dword:00000000
+"NoNetConnectDisconnect"=dword:00000000
+"NoFind"=dword:00000000
+"NoSaveSettings"=dword:00000000
+"NoGoTo"=dword:00000000
+"NoDisconnect"=dword:00000000
+"NoFileAssociate"=dword:00000000
+"NoRecentDocsMenu"=dword:00000000
+"NoFavoritesMenu"=dword:00000000
+"NoOptions"=dword:00000000
+"NoNTSecurity"=dword:00000000
+"NoCommonGroups"=dword:00000000
+"NoNetHood"=dword:00000000
+"NoDrives"=hex:00,00,00,00
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions]
+"NoBrowserOptions"=dword:00000000
+"NoFileNew"=dword:00000000
+"NoFindFiles"=dword:00000000
+"NoSelectDownloadDir"=dword:00000000
+"NoTheaterMode"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Infodelivery\Restrictions]
+"NoAddingChannels"=dword:00000000
+"NoAddingSubscriptions"=dword:00000000
+"NoSearchCustomization"=dword:00000000
+"NoRemovingChannels"=dword:00000000
+"NoRemovingSubscriptions"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Control Panel]
+"Connwiz Admin Lock"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Main]
+"Disable Script Debugger"="no"
+"Use FormSuggest"="yes"
+"FormSuggest Passwords"="yes"
+"Err Dlg Displayed On Every Error"="yes"
+"Use Custom Search URL"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\WindowsMediaPlayer]
+"NoFindNewStations"=dword:00000000
+"NoMediaFavorites"=dword:00000000
+"NoRadioBar"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Connection Wizard]
+"CanInstallISPKit5"="yes"
+

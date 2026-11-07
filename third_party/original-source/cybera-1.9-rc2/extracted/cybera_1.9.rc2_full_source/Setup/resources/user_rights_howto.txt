@@ -1,0 +1,50 @@
+CYBERA - How to set up user rights lockdown  
+________________________________________________________________________________
+OPERATING SYSTEMS: 
+You must use Win2000 or WinXP Pro. 
+On WinXP Pro you must disable 'Simple file sharing'. 
+
+________________________________________________________________________________
+WINDOWS USER ACCOUNTS (logins names are an example) 
+ 
+- On the Workstations: 
+Create an account called 'user' with basic user rights.
+Create an account called 'manager' with ADMINASTRATIVE user rights (MUST be a 
+windows adminitrator). 
+ 
+- On the Server:
+Create an account called 'user' with basic user rights.
+Create an account called 'manager' with basic user rights.
+ 
+IMORTANT: the accounts on the server and the workstations must have the same 
+passwords! 
+ex: the 'user' has no password and the 'manager' account has 'cybera' as a 
+password on both the server AND the workstations. 
+
+________________________________________________________________________________
+NORMAL OPERATION: 
+ 
+- On the Workstations: 
+Login as 'user' and start Cybera Client. 
+ 
+- On the Server: 
+Login as 'manager' and start Cybera Server. 
+
+________________________________________________________________________________
+NOTES: 
+- The system works because the windows user on the server PC has admin rights on 
+the workstation PCs and therefore the server can access the workstation´s 
+registry remotely. When you get an error about not being able to lockdown the 
+workstations this means that this condition is not fullfilled. 
+ 
+- The 'user' account on the server is only usefull if you want to enable file 
+sharing from the server (for in-house IT trainning courses or for use with 
+session start & Stop scripts). 
+ 
+- The 'manager' account does not need to have admin privileges on the server, 
+only on the workstations. This means that you can control how the managers use 
+the server PC as well (if you are a windows admin). 
+ 
+- In normal usage the 'manager' account on the clients is never used, it is only 
+there to enable remote registry access from the server (and mabe for computer
+maintanence). 

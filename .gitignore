@@ -1,0 +1,4 @@
+# Build output for the modern .NET bridge
+modern-bridge/bin/
+modern-bridge/obj/
+artifacts/

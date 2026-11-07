@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CybWinLock - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x809 /fo"..\..\Release\CybWinLock/CybWinLock.res" /d "NDEBUG" "D:\home\sam\dev\win32\Cybera\Source\CybWinLock\CybWinLock.RC"" 
+Creating temporary file "d:\home\sam\LOCALS~1\Temp\RSP1C.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CYBWINLOCK_EXPORTS" /D "_DLL_" /FR"..\..\Release\CybWinLock/" /Fp"..\..\Release\CybWinLock/CybWinLock.pch" /YX /Fo"..\..\Release\CybWinLock/" /Fd"..\..\Release\CybWinLock/" /FD /c 
+"D:\home\sam\dev\win32\Cybera\Source\CybWinLock\CybWinLock.c"
+"D:\home\sam\dev\win32\Cybera\Source\CybWinLock\Inject.c"
+]
+Creating command line "cl.exe @d:\home\sam\LOCALS~1\Temp\RSP1C.tmp" 
+Creating temporary file "d:\home\sam\LOCALS~1\Temp\RSP1D.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"..\..\Release\CybWinLock/CybWinLock.pdb" /machine:I386 /def:".\CybWinLock.def" /out:"..\..\Release\CybWinLock/CybWinLock.dll" /implib:"..\..\Release\CybWinLock/CybWinLock.lib" 
+\home\sam\dev\win32\Cybera\Release\CybWinLock\CybWinLock.obj
+\home\sam\dev\win32\Cybera\Release\CybWinLock\Inject.obj
+\home\sam\dev\win32\Cybera\Release\CybWinLock\CybWinLock.res
+]
+Creating command line "link.exe @d:\home\sam\LOCALS~1\Temp\RSP1D.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+CybWinLock.c
+Inject.c
+Linking...
+   Creating library ..\..\Release\CybWinLock/CybWinLock.lib and object ..\..\Release\CybWinLock/CybWinLock.exp
+Creating command line "bscmake.exe /nologo /o"..\..\Release\CybWinLock/CybWinLock.bsc"  \home\sam\dev\win32\Cybera\Release\CybWinLock\CybWinLock.sbr \home\sam\dev\win32\Cybera\Release\CybWinLock\Inject.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+CybWinLock.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
